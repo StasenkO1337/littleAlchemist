@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="littleAlchemist:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/littleAlchemist_jar</output-path>
+    <root id="archive" name="littleAlchemist.jar">
+      <element id="module-output" name="littleAlchemist" />
+    </root>
+  </artifact>
+</component>
