@@ -1,8 +1,8 @@
 package object;
 
+import entity.Entity;
 import main.GamePanel;
 
-import javax.imageio.ImageIO;
 
 public class OBJ_key extends entity.Entity {
 
@@ -10,5 +10,11 @@ public class OBJ_key extends entity.Entity {
         super(gp);
         name = "Key";
         down1 = setup("/objects/key");
+        description = name + "\nOpen all what you see";
+        type = typePickUpOnly;
+    }
+
+    public void use(Entity entity){
+        gp.player.haveKey1 = true;
     }
 }

@@ -1,32 +1,40 @@
 package main;
-
-import java.awt.*;
-
+import entity.Entity;
 public class EventHandler {
     GamePanel gp;
-    EventRect eventRectangle[][];
+    EventRect eventRectangle[][][];
 
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
+    int tmpMap,tmpX,tmpY;
 
     public EventHandler(GamePanel gp) {
         this.gp = gp;
-        eventRectangle = new EventRect[gp.maxWorldCol][gp.maxWorldRow];
+        eventRectangle = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
 
+        int map = 0;
         int col = 0;
         int row = 0;
-        while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
-            eventRectangle[col][row] = new EventRect();
-            eventRectangle[col][row].x = 23;
-            eventRectangle[col][row].y = 23;
-            eventRectangle[col][row].width = 2;
-            eventRectangle[col][row].height = 2;
-            eventRectangle[col][row].eventRectDefaultX = eventRectangle[col][row].x;
-            eventRectangle[col][row].eventRectDefaultY = eventRectangle[col][row].y;
+
+        while (map < gp.maxMap && col < gp.maxWorldCol && row < gp.maxWorldRow) {
+
+            eventRectangle[map][col][row] = new EventRect();
+            eventRectangle[map][col][row].x = 8;
+            eventRectangle[map][col][row].y = 8;
+            eventRectangle[map][col][row].width = 32;
+            eventRectangle[map][col][row].height = 32;
+            eventRectangle[map][col][row].eventRectDefaultX = eventRectangle[map][col][row].x;
+            eventRectangle[map][col][row].eventRectDefaultY = eventRectangle[map][col][row].y;
+
             col++;
             if (col == gp.maxWorldCol) {
                 col = 0;
                 row++;
+
+                if (row == gp.maxWorldRow - 1){
+                    row = 0;
+                    map++;
+                }
             }
         }
 
@@ -43,25 +51,28 @@ public class EventHandler {
         }
 
         if (canTouchEvent == true){
-            if (hit(49, 58, "right") == true) {
-                gp.player.direction = "left";
-                damagePit(49,43,gp.dialogueState);
-            }
+            if(hit(1,48,24,"any") == true){teleport(0,2,25);}
+            else if(hit(1,48,25,"any") == true){teleport(0,2,25);}
+            else if(hit(1,48,26,"any") == true){teleport(0,2,26);}
+            else if(hit(1,48,27,"any") == true){teleport(0,2,26);}
+            else if(hit(0,1,25,"any") == true){teleport(1,47,25);}
+            else if(hit(0,1,26,"any") == true){teleport(1,47,26);}
+            else if(hit(0,11,19,"up") == true){speak(gp.npc[0][1]);}
+            else if(hit(0,25,1,"any") == true){teleport(2,25,48);}
+            else if(hit(0,26,1,"any") == true){teleport(2,24,48);}
         }
 
-        if (hit(41, 52  , "any") == true) {
-            healingPool(gp.dialogueState);
-        }
+    }
 
-        if (hit(51, 49, "any") == true) {
-            teleport(gp.dialogueState, 45, 55);
-        }
-        if (hit(45, 55, "any") == true) {
-            teleport(gp.dialogueState, 51, 49);
+    public void speak(Entity entity){
+        if (gp.keyH.fPressed == true){
+            gp.gameState = gp.dialogueState;
+            gp.player.attackCanceled = true;
+            entity.speak();
         }
     }
 
-    public void damagePit(int col,int row,int gameState) {
+    public void damagePit(int gameState) {
         gp.gameState = gameState;
         gp.ui.currentDialogue = "попався в ловушку";
         gp.player.life -= 1;
@@ -69,48 +80,51 @@ public class EventHandler {
         canTouchEvent = false;
     }
 
-    public boolean hit(int col, int row, String reqDirection) {
+    public boolean hit(int map,int col, int row, String reqDirection) {
         boolean hit = false;
 
-        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
-        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
-        eventRectangle[col][row].x = col * gp.tileSize + eventRectangle[col][row].x;
-        eventRectangle[col][row].y = row * gp.tileSize + eventRectangle[col][row].y;
-
-        if (gp.player.solidArea.intersects(eventRectangle[col][row]) && eventRectangle[col][row].eventDone == false) {
-            if (gp.player.direction.contentEquals(reqDirection) ||
-                    reqDirection.contentEquals("any") ) {
-                hit = true;
-
-                previousEventX = gp.player.worldX;
-                previousEventY = gp.player.worldY;
+        if (map == gp.currentMap) {
+            gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+            gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+            eventRectangle[map][col][row].x = col * gp.tileSize + eventRectangle[map][col][row].x;
+            eventRectangle[map][col][row].y = row * gp.tileSize + eventRectangle[map][col][row].y;
+            if (gp.player.solidArea.intersects(eventRectangle[map][col][row]) && eventRectangle[map][col][row].eventDone == false) {
+                if (gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
+                    hit = true;
+                    previousEventX = gp.player.worldX;
+                    previousEventY = gp.player.worldY;
+                }
             }
+            gp.player.solidArea.x = gp.player.solidAreaDefaultX;
+            gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+            eventRectangle[map][col][row].x = eventRectangle[map][col][row].eventRectDefaultX;
+            eventRectangle[map][col][row].y = eventRectangle[map][col][row].eventRectDefaultY;
         }
-
-        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
-        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
-        eventRectangle[col][row].x = eventRectangle[col][row].eventRectDefaultX;
-        eventRectangle[col][row].y = eventRectangle[col][row].eventRectDefaultY;
-
         return hit;
     }
 
     public void healingPool(int gameState) {
-        if (gp.keyH.ePressed == true) {
+        if (gp.keyH.fPressed == true) {
             gp.gameState = gameState;
             gp.ui.currentDialogue = "вам дали святой водички и отпустили\nгрехи";
             gp.player.life = gp.player.maxLife;
+            gp.player.mana = gp.player.maxMana;
+            gp.aSetter.setMonster();
         }
-        gp.keyH.ePressed = false;
+        gp.keyH.fPressed = false;
     }
 
-    public void teleport(int gameState, int x, int y) {
-        if (gp.keyH.ePressed == true) {
-            gp.ui.currentDialogue = "тп на базу";
-            gp.gameState = gameState;
-            gp.player.worldX = x * gp.tileSize;
-            gp.player.worldY = y * gp.tileSize;
-        }
-        gp.keyH.ePressed = false;
+    public void teleport(int mapNum, int x, int y) {
+        gp.gameState = gp.transitionState;
+        tmpMap = mapNum;
+        tmpX = x;
+        tmpY = y;
+
+
+
+
+        canTouchEvent = false;
+
+        gp.playSE(2);
     }
 }

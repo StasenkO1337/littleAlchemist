@@ -1,16 +1,18 @@
 package main;
 
+import ai.PathFinder;
 import entity.Entity;
 import entity.Player;
-//import object.SuperObject;
+import environment.EnvironmentManager;
 import tile.TileManager;
+import tile_interactive.interactiveTile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable {
     //настройки экрана
@@ -19,44 +21,67 @@ public class GamePanel extends JPanel implements Runnable {
 
     //параметры картинки
     public final int tileSize = originalTileSize * tileScale;//48 на 48 пикселей
-    public final int maxScreenCol = 16;
+    public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
-    public final int screenWidth = maxScreenCol * tileSize; //768 пикселей
+    public final int screenWidth = maxScreenCol * tileSize; //960 пикселей
     public final int screenHeight = maxScreenRow * tileSize;//576 пикселей
 
 
     //параметры мира
-    public final int maxWorldCol = 100;
-    public final int maxWorldRow = 100;
+    public int maxWorldCol ;
+    public int maxWorldRow ;
+    public final int maxMap = 10;
+    public int currentMap = 0;
+
+    //экран
+    int screenWidth2 = screenWidth;
+    int screenHeight2 = screenHeight;
+    BufferedImage tempScreen;
+    Graphics2D g2;
 
     public boolean GameFinished = false;
-
+    public boolean fullScreenOn = false;
     int FPS = 60;
 
     //система
-    TileManager tileManager = new TileManager(this);
+    public TileManager tileManager = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
+    public UI ui =new UI(this);
+    public AssetSetter aSetter = new AssetSetter(this);
+    public PathFinder pathFinder = new PathFinder(this);
+
     Sound music = new Sound();
     Sound se = new Sound();
     Thread gameThread;
-    public UI ui =new UI(this);
-    public AssetSetter assetSetter = new AssetSetter(this);
+    Config config = new Config(this);
+    EnvironmentManager eManager = new EnvironmentManager(this);
+
     //сущности и обьекты
     public Player player = new Player(this, keyH);
-    public Entity obj[] = new Entity[10];
-    public Entity npc[] = new Entity[10];
-    public Entity monster[] = new Entity[20];
-    ArrayList<Entity> entityList = new ArrayList<>();
+    public Entity obj[][] = new Entity[maxMap][20];
+    public Entity npc[][] = new Entity[maxMap][10];
+    public Entity monster[][] = new Entity[maxMap][20];
+    public Entity projectile[][] = new Entity[maxMap][30];
 
+    public interactiveTile iTile[][] = new interactiveTile[maxMap][50];
+    public ArrayList<Entity> entityList = new ArrayList<>();
+    public ArrayList<Entity> particleList = new ArrayList<>();
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public EventHandler eventHandler = new EventHandler(this);
 
+
+    //переключатели стадий игры
     public int gameState;
     public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
-
+    public final int characterState = 4;
+    public final int optionsState = 5;
+    public final int gameOverState = 6;
+    public final int transitionState = 7;
+    public final int tradeState = 8;
+    public final int doorState = 9;
 
     public GamePanel() throws IOException, FontFormatException {
 
@@ -68,12 +93,20 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame() {
-        assetSetter.setObjects();
-        assetSetter.setNPC();
-        assetSetter.setMonster();
-        //playMusic(0);
-        //stopMusic();
+        aSetter.setObjects();
+        aSetter.setNPC();
+        aSetter.setMonster();
+        aSetter.setInteractiveTile();
+        eManager.setUp();
+        playMusic(0);
         gameState = titleState;
+
+        tempScreen = new BufferedImage(screenWidth,screenHeight,BufferedImage.TYPE_INT_ARGB);
+        g2 = (Graphics2D) tempScreen.getGraphics();
+
+        if (fullScreenOn) {
+            setFullScreen();
+        }
     }
 
     public void startGameThread() {
@@ -98,90 +131,144 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (delta >= 1) {
                 update();
-                repaint();
+
+                drawToTempScreen();
+                drawToScreen();
+                //System.out.print(gameState);
                 delta--;
             }
         }
     }
 
     public void update() {
+        if ( gameState == titleState){
+            ui.draw(g2);
+        }
         if( gameState == playState) {
             player.update();
-            for(int i = 0; i < npc.length; i++){
-                if(npc[i]!= null) {
-                    npc[i].update();
+            for(int i = 0; i < npc[1].length; i++){
+                if(npc[currentMap][i]!= null) {
+                    npc[currentMap][i].update();
                 }
             }
-            for(int i = 0; i < monster.length; i++){
-                if(monster[i]!= null) {
-                    if(monster[i].alive == true && monster[i].dying == false) {
-                        monster[i].update();
+            for(int i = 0; i < monster[1].length; i++){
+                if(monster[currentMap][i]!= null) {
+                    if(monster[currentMap][i].alive == true && monster[currentMap][i].dying == false) {
+                        monster[currentMap][i].update();
                     }
-                    if(monster[i].alive == false) {
-                        monster[i] = null;
+                    if(monster[currentMap][i].alive == false) {
+                        monster[currentMap][i].checkDrop();
+                        monster[currentMap][i] = null;
                     }
                 }
             }
-        }
-        if (gameState == pauseState){
+            for(int i = 0; i < projectile[1].length; i++){
+                if(projectile[currentMap][i] != null) {
+                    if(projectile[currentMap][i].alive == true) {
+                        projectile[currentMap][i].update();
+                    }
+                    if(projectile[currentMap][i].alive == false) {
+                        projectile[currentMap][i] = null;
+                    }
+                }
+            }
 
+            for(int i = 0; i < particleList.size(); i++){
+                if(particleList.get(i)!= null) {
+                    if(particleList.get(i).alive == true) {
+                        particleList.get(i).update();
+                    }
+                    if(particleList.get(i).alive == false) {
+                        particleList.remove(i);
+                    }
+                }
+            }
+
+            for (int i = 0; i < iTile[1].length; i ++){
+                if(iTile[currentMap][i] != null){
+                    iTile[currentMap][i].update();
+                }
+            }
         }
+
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        //стартовый экран
-        if (gameState == titleState){
-            ui.draw(g2);
-        } else {
+    public void setFullScreen(){
+        //получение разрешение устройства
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        gd.setFullScreenWindow(Main.window);
+
+        //получаем ширину и высоту
+        screenWidth2 = Main.window.getWidth();
+        screenHeight2 = Main.window.getHeight();
+    }
+
+    public void setWindowScreen(){
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+
+
+    }
+    public void drawToTempScreen() {
+
             //карта
             tileManager.draw(g2);
+            for (int i = 0; i < iTile[1].length; i++) {
+                if (iTile[currentMap][i] != null) {
+                    iTile[currentMap][i].draw(g2);
+                }
+            }
             //добавить сущности в лист
             entityList.add(player);
 
-            for(int i = 0; i < npc.length; i ++){
-                if (npc[i] != null){
-                    entityList.add(npc[i]);
+            for (int i = 0; i < npc[1].length; i++) {
+                if (npc[currentMap][i] != null) {
+                    entityList.add(npc[currentMap][i]);
                 }
             }
 
-            for(int i = 0; i < obj.length; i ++){
-                if (obj[i] != null){
-                    entityList.add(obj[i]);
+            for (int i = 0; i < obj[1].length; i++) {
+                if (obj[currentMap][i] != null) {
+                    entityList.add(obj[currentMap][i]);
                 }
             }
-
-            for(int i = 0; i < monster.length; i ++){
-                if (monster[i] != null){
-                    entityList.add(monster[i]);
+            for (int i = 0; i < monster[1].length; i++) {
+                if (monster[currentMap][i] != null) {
+                    entityList.add(monster[currentMap][i]);
                 }
             }
-
-
+            for (int i = 0; i < projectile[1].length; i++) {
+                if (projectile[currentMap][i] != null) {
+                    entityList.add(projectile[currentMap][i]);
+                }
+            }
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+                    entityList.add(particleList.get(i));
+                }
+            }
             //сортировка
-            Collections.sort(entityList, new Comparator<Entity>() {
-                @Override
-                public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldY, e2.worldY);
-                    return result;
-                }
+            Collections.sort(entityList, (e1, e2) -> {
+                int result = Integer.compare(e1.worldY, e2.worldY);
+                return result;
             });
-
             // отрисовка обьектов
-
-            for (int i = 0; i < entityList.size(); i ++){
+            for (int i = 0; i < entityList.size(); i++) {
                 entityList.get(i).draw(g2);
             }
-
             entityList.clear();
-
-            //интервейс
+            //окружение
+            eManager.draw(g2);
+            //интерфейс
             ui.draw(g2);
 
-            g2.dispose();
-        }
+    }
 
+    public void drawToScreen(){
+        Graphics g = getGraphics();
+        g.drawImage(tempScreen,0,0,screenWidth2,screenHeight2,null);
+        g.dispose();
     }
 
     public void playMusic(int i){
@@ -192,6 +279,23 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void stopMusic(){
         music.stop();
+    }
+
+    public void retry(){
+        player.setDefaultPosition();
+        player.restoreManaAndLife();
+        aSetter.setNPC();
+        aSetter.setMonster();
+    }
+
+    public void restart(){
+        player.setDefaultValues();
+        player.setDefaultPosition();
+        player.restoreManaAndLife();
+        aSetter.setNPC();
+        aSetter.setMonster();
+        aSetter.setObjects();
+        aSetter.setInteractiveTile();
     }
 
     public void playSE(int i){

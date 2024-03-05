@@ -6,166 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de5f3d0e-3935-4fea-b2a2-0325629d7d7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/littleAlchemist_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/littleAlchemist.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/font/x16y32pxGridGazer.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/maps/map.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/monster/slimeG/slimeG1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/monster/slimeG/slimeG2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/up1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/oldMaster/up2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/npc/preacher/preacher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/chest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/door.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/fan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/flaskR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/heart/heartB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/heart/heartF.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/heart/heartH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/key.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/objects/oldChest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/BlueBoyAdventure.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/Dungeon.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/FinalBattle.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/Merchant.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/blocked.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/burning.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/chipwall.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/coin.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/cursor.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/cuttree.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/dooropen.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/fanfare.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/gameover.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/hitmonster.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/levelup.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/main.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/parry.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/powerup.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/receivedamage.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/sleep.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/speak.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/stairs.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/sound/unlock.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AD1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AD2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AL1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AL2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AR1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AR2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AU1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/AU2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/up1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/spirit/up2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/99.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/GS9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/book1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/book2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/book3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/grass9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/road9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/sand9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/wall1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/tiles/water1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/NPC_oldMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/NPC_preacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/CollisionChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/EventRect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/UtilityTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/monster/MON_slimeG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_Heart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_chest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_door.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_fan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_flaskR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/OBJ_key.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/object/SuperObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tile/Tile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="de5f3d0e-3935-4fea-b2a2-0325629d7d7b" name="Changes" comment="git" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,14 +40,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/power/littleAlchemist&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/littleAlchemist&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3816092&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.3816092&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.postfix.templates&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\littleAlchemist\res\maps" />
       <recent name="D:\power\littleAlchemist\res\font" />
       <recent name="D:\power\littleAlchemist\res" />
       <recent name="D:\power\littleAlchemist" />
@@ -260,8 +104,90 @@
       <workItem from="1703433586030" duration="10225000" />
       <workItem from="1703465496341" duration="3694000" />
       <workItem from="1703475372113" duration="7353000" />
-      <workItem from="1703522615188" duration="1403000" />
+      <workItem from="1703522615188" duration="2101000" />
+      <workItem from="1703535786547" duration="11727000" />
+      <workItem from="1703592599282" duration="3312000" />
+      <workItem from="1703601127944" duration="6385000" />
+      <workItem from="1703626209744" duration="5969000" />
+      <workItem from="1703639232573" duration="601000" />
+      <workItem from="1703647466818" duration="6787000" />
+      <workItem from="1703688039087" duration="3971000" />
+      <workItem from="1703707442416" duration="3276000" />
+      <workItem from="1703732032338" duration="3950000" />
+      <workItem from="1704273837949" duration="30000" />
+      <workItem from="1704334076163" duration="2239000" />
+      <workItem from="1704336539500" duration="464000" />
+      <workItem from="1705053473194" duration="775000" />
+      <workItem from="1705058398710" duration="270000" />
+      <workItem from="1705188790132" duration="1700000" />
+      <workItem from="1705264843612" duration="389000" />
+      <workItem from="1705319071792" duration="625000" />
+      <workItem from="1705331322333" duration="350000" />
+      <workItem from="1705341494241" duration="3000" />
+      <workItem from="1705343610660" duration="178000" />
+      <workItem from="1705428619819" duration="872000" />
+      <workItem from="1705614219050" duration="434000" />
+      <workItem from="1705639018233" duration="711000" />
+      <workItem from="1705699001867" duration="1436000" />
+      <workItem from="1705703178847" duration="677000" />
+      <workItem from="1705711031821" duration="794000" />
+      <workItem from="1705715126180" duration="68000" />
+      <workItem from="1705723171597" duration="1088000" />
+      <workItem from="1705989647695" duration="603000" />
+      <workItem from="1705992750190" duration="311000" />
+      <workItem from="1706351264790" duration="1188000" />
+      <workItem from="1706428625207" duration="16000" />
+      <workItem from="1706429014876" duration="459000" />
+      <workItem from="1706456303817" duration="743000" />
+      <workItem from="1706511443756" duration="3231000" />
+      <workItem from="1707563733784" duration="594000" />
+      <workItem from="1707733641084" duration="2688000" />
+      <workItem from="1707800560542" duration="591000" />
+      <workItem from="1707811419755" duration="2263000" />
+      <workItem from="1707821550472" duration="788000" />
+      <workItem from="1707896768136" duration="415000" />
+      <workItem from="1707900004998" duration="2285000" />
+      <workItem from="1707912130355" duration="3051000" />
+      <workItem from="1707997219739" duration="1917000" />
+      <workItem from="1708070458731" duration="5000" />
+      <workItem from="1708087365314" duration="625000" />
+      <workItem from="1708303497312" duration="6802000" />
+      <workItem from="1708323361890" duration="78000" />
+      <workItem from="1708326086222" duration="5586000" />
+      <workItem from="1708423422741" duration="5289000" />
+      <workItem from="1708436071633" duration="2775000" />
+      <workItem from="1708472033214" duration="206000" />
+      <workItem from="1708615398747" duration="2396000" />
+      <workItem from="1708703682352" duration="3965000" />
+      <workItem from="1708788476227" duration="4246000" />
+      <workItem from="1708889856559" duration="1548000" />
+      <workItem from="1708993371561" duration="3690000" />
+      <workItem from="1709008092910" duration="4860000" />
+      <workItem from="1709026905765" duration="1150000" />
+      <workItem from="1709075449197" duration="18563000" />
+      <workItem from="1709105766111" duration="10000" />
+      <workItem from="1709113052838" duration="3160000" />
+      <workItem from="1709159154805" duration="9734000" />
+      <workItem from="1709188981823" duration="3195000" />
+      <workItem from="1709245271325" duration="1793000" />
+      <workItem from="1709258578629" duration="15880000" />
+      <workItem from="1709395965995" duration="7194000" />
+      <workItem from="1709454934630" duration="1549000" />
+      <workItem from="1709459847305" duration="17924000" />
+      <workItem from="1709549595068" duration="2530000" />
+      <workItem from="1709553577109" duration="7354000" />
+      <workItem from="1709573717831" duration="1594000" />
+      <workItem from="1709623481141" duration="5855000" />
+      <workItem from="1709652243468" duration="3976000" />
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1703524049827</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703524049827</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,5 +206,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

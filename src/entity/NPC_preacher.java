@@ -17,6 +17,7 @@ public class NPC_preacher extends Entity {
 
     public void setDialogue(){
         dialogues[0] = "ежжи еси на небеси";
+        dialogues[1] = "салам";
     }
 
     public void getNPCImage() {

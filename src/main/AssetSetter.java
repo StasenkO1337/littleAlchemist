@@ -2,11 +2,11 @@ package main;
 
 import entity.NPC_oldMaster;
 import entity.NPC_preacher;
+import entity.NPC_seller;
+import monster.MON_evilEye;
 import monster.MON_slimeG;
-import object.OBJ_chest;
-import object.OBJ_door;
-import object.OBJ_fan;
-import object.OBJ_key;
+import object.*;
+import tile_interactive.IT_tree;
 
 
 public class AssetSetter {
@@ -17,36 +17,85 @@ public class AssetSetter {
     }
 
     public void setObjects() {
-        gp.obj[0] = new OBJ_door(gp);
-        gp.obj[0].worldX = gp.tileSize * 50;
-        gp.obj[0].worldY = gp.tileSize * 48;
+        int i = 0;
+        int mapNum = 1;
 
-        gp.obj[1] = new OBJ_key(gp);
-        gp.obj[1].worldX = gp.tileSize * 49;
-        gp.obj[1].worldY = gp.tileSize * 49;
+        gp.obj[mapNum][i] = new OBJ_door(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 20;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 31;
+        i++;
 
-        gp.obj[2] = new OBJ_fan(gp);
-        gp.obj[2].worldX = gp.tileSize * 49;
-        gp.obj[2].worldY = gp.tileSize * 50;
+        gp.obj[1][i] = new OBJ_key(gp);
+        gp.obj[1][i].worldX = gp.tileSize * 22;
+        gp.obj[1][i].worldY = gp.tileSize * 32;
+        i++;
+
+        gp.obj[0][i] = new OBJ_flaskHeal(gp);
+        gp.obj[0][i].worldX = gp.tileSize * 22;
+        gp.obj[0][i].worldY = gp.tileSize * 32;
+        i++;
+        gp.obj[0][i] = new OBJ_flaskHeal(gp);
+        gp.obj[0][i].worldX = gp.tileSize * 22;
+        gp.obj[0][i].worldY = gp.tileSize * 33;
+        i++;
+        gp.obj[0][i] = new OBJ_flaskR(gp);
+        gp.obj[0][i].worldX = gp.tileSize * 22;
+        gp.obj[0][i].worldY = gp.tileSize * 34;
+        i++;
+        gp.obj[0][i] = new OBJ_flaskR(gp);
+        gp.obj[0][i].worldX = gp.tileSize * 22;
+        gp.obj[0][i].worldY = gp.tileSize * 35;
+        i++;
     }
 
     public void setNPC() {
-        gp.npc[0] = new NPC_oldMaster(gp);
-        gp.npc[0].worldX = gp.tileSize * 50;
-        gp.npc[0].worldY = gp.tileSize * 45;
+        int mapNum = 0;
+        int i = 0;
 
-        gp.npc[1] = new NPC_preacher(gp);
-        gp.npc[1].worldX = gp.tileSize * 41;
-        gp.npc[1].worldY = gp.tileSize * 52;
+        gp.npc[mapNum][i] = new NPC_preacher(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 37;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 15;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_seller(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 11;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 17;
+        i++;
+
+        gp.npc[mapNum][i] = new NPC_oldMaster(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 37;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 20;
+        i++;
     }
 
     public void setMonster(){
-        gp.monster[0] = new MON_slimeG(gp);
-        gp.monster[0].worldX = gp.tileSize * 62;
-        gp.monster[0].worldY = gp.tileSize * 53;
+        int mapNum = 0;
+        int i = 0;
 
-        gp.monster[1] = new MON_slimeG(gp);
-        gp.monster[1].worldX = gp.tileSize * 62;
-        gp.monster[1].worldY = gp.tileSize * 54;
+        gp.monster[1][i] = new MON_evilEye(gp);
+        gp.monster[1][i].worldX = gp.tileSize * 22;
+        gp.monster[1][i].worldY = gp.tileSize * 20;
+        i++;
+        gp.monster[1][i] = new MON_evilEye(gp);
+        gp.monster[1][i].worldX = gp.tileSize * 22;
+        gp.monster[1][i].worldY = gp.tileSize * 23;
+        i++;
+        gp.monster[1][i] = new MON_evilEye(gp);
+        gp.monster[1][i].worldX = gp.tileSize * 22;
+        gp.monster[1][i].worldY = gp.tileSize * 24;
+        i++;
+        gp.monster[1][i] = new MON_slimeG(gp);
+        gp.monster[1][i].worldX = gp.tileSize * 22;
+        gp.monster[1][i].worldY = gp.tileSize * 25;
+        i++;
+    }
+
+    public void setInteractiveTile(){
+        int mapNum = 0;
+        int i = 0;
+
+        //gp.iTile[mapNum][i] = new IT_tree(gp,30,35);
+        i++;
+
     }
 }
