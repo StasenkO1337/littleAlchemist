@@ -5,7 +5,6 @@ import main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,6 +62,8 @@ public class TileManager {
         loadMap("/maps/townMap.txt",0);
         loadMap("/maps/testMap.txt",1);
         loadMap("/maps/forest.txt",2);
+        loadMap("/maps/cave.txt",3);
+        loadMap("/maps/cave2.txt",4);
     }
 
     public void loadMap(String filePath, int map) {
@@ -154,16 +155,16 @@ public class TileManager {
                 worldRow++;
             }
         }
-        if(drawPath == true){
-            g2.setColor((new Color(255,0,0,70)));
-            for(int i = 0; i < gp.pathFinder.pathList.size(); i++){
-                int worldX = gp.pathFinder.pathList.get(i).col * gp.tileSize;
-                int worldY = gp.pathFinder.pathList.get(i).row * gp.tileSize;
-                int screenX = worldX + gp.player.screenX - gp.player.worldX;
-                int screenY = worldY + gp.player.screenY - gp.player.worldY;
-
-                g2.fillRect(screenX,screenY,gp.tileSize, gp.tileSize);
-            }
-        }
+//        if(drawPath == true){
+//            g2.setColor((new Color(255,0,0,70)));
+//            for(int i = 0; i < gp.pFinder.pathList.size(); i++){
+//                int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+//                int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+//                int screenX = worldX + gp.player.screenX - gp.player.worldX;
+//                int screenY = worldY + gp.player.screenY - gp.player.worldY;
+//
+//                g2.fillRect(screenX,screenY,gp.tileSize, gp.tileSize);
+//            }
+//        }
     }
 }

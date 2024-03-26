@@ -13,7 +13,7 @@ public class OBJ_evilEyeBall extends Projectile {
         this.gp = gp;
 
         name = "evilEyeBall";
-        speed = 3;
+        speed = 4;
         attack = 2;
         maxLife = 80;
         life = maxLife;

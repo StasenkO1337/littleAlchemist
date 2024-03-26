@@ -12,5 +12,9 @@ public class OBJ_fireRealm extends Entity {
         type = typeWeapon;
         knockBackPower = 3;
         description = name + "\nallows you to let\nin slimes";
+        attackArea.width = 52;
+        attackArea.height = 52;
+        motion1Duration = 10;
+        motion2Duration = 30;
     }
 }

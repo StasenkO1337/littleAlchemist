@@ -59,8 +59,7 @@ public class UI {
         manaB = mana.image2;
         coin = Coin.down1;
     }
-
-    public void draw(Graphics2D g2) {
+    public void draw(Graphics2D g2) throws Exception {
         this.g2 = g2;
         g2.setFont(fontD);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32));
@@ -68,6 +67,7 @@ public class UI {
 
         if (gp.gameState == gp.playState) {
             drawPlayerLife();
+            drawMonsterLife();
             drawMessage();
         }
 
@@ -110,8 +110,34 @@ public class UI {
         if (gp.gameState == gp.doorState){
             doorScreen();
         }
-    }
 
+        if (gp.gameState == gp.bedState){
+            bedState();
+        }
+        if (gp.gameState == gp.sleepState){
+            sleepState();
+        }
+    }
+    public void sleepState(){
+        counter++;
+
+        if (counter < 120){
+            gp.eManager.lighting.filterAlpha += 0.01f;
+            if (gp.eManager.lighting.filterAlpha > 1f){
+                gp.eManager.lighting.filterAlpha =1f;
+            }
+        }
+        if (counter >= 120){
+            gp.eManager.lighting.filterAlpha -= 0.01f;
+            if (gp.eManager.lighting.filterAlpha <= 0f){
+                gp.eManager.lighting.filterAlpha = 0f;
+                counter = 0;
+                gp.eManager.lighting.dayState = gp.eManager.lighting.dawn;
+                gp.eManager.lighting.dayCounter = 0;
+                gp.gameState = gp.playState;
+            }
+        }
+    }
     public void drawTradeScreen() {
         switch (subState){
             case 0:trade_select();break;
@@ -120,7 +146,46 @@ public class UI {
         }
         gp.keyH.fPressed = false;
     }
+    public void bedState() throws Exception {
+        int x = gp.tileSize * 8 + 24;
+        int y = gp.tileSize * 2;
+        int width = gp.tileSize * 3;
+        int height = gp.tileSize * 3 + 24;
 
+        drawSubWindow(x,y,width,height);
+        String text;
+
+        g2.setColor(Color.white);
+
+        x+=gp.tileSize - 14;
+        y+=gp.tileSize;
+        g2.drawString("Sleep",x,y);
+        if (commandNum == 0){
+            g2.drawString(">",x - 20,y);
+            if (gp.keyH.fPressed == true) {
+                gp.gameState = gp.sleepState;
+                gp.player.life = gp.player.maxLife;
+                gp.player.mana = gp.player.maxMana;
+                try {
+                    gp.saveLoad.save();
+                    gp.ui.addMessage("Игра сохранена");
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        y+=gp.tileSize + 10;
+        g2.drawString("Leave",x,y);
+        if (commandNum == 1){
+            g2.drawString(">",x - 20,y);
+            if (gp.keyH.fPressed == true){
+                commandNum = 0;
+                gp.gameState = gp.dialogueState;
+                currentDialogue = "Ещё столько дел.....";
+            }
+        }
+        gp.keyH.fPressed = false;
+    }
     public void doorScreen(){
         int x = gp.tileSize * 8 + 24;
         int y = gp.tileSize * 2;
@@ -160,7 +225,6 @@ public class UI {
         }
         gp.keyH.fPressed = false;
     }
-
     public void trade_select(){
         int x = gp.tileSize * 8 + 24;
         int y = gp.tileSize * 2;
@@ -204,7 +268,6 @@ public class UI {
         }
         gp.keyH.fPressed = false;
     }
-
     public void trade_sell() {
         drawInventory(gp.player, true);
 
@@ -243,7 +306,6 @@ public class UI {
         drawSubWindow(x, y, gp.tileSize * 3, gp.tileSize * 2);
         g2.drawString("ESC - back", x+24, y+36);
     }
-
     public void trade_buy() {
         drawInventory(gp.player, false);
         drawInventory(npc, true);
@@ -286,8 +348,6 @@ public class UI {
         drawSubWindow(x, y, gp.tileSize * 3, gp.tileSize * 2);
         g2.drawString("ESC - back", x+24, y+36);
     }
-
-
     private void drawTransition() {
         counter++;
         g2.setColor(new Color(0,0,0, counter * 5));
@@ -296,12 +356,11 @@ public class UI {
         if (counter == 50){
             counter = 0;
             gp.gameState = gp.playState;
-            gp.currentMap = gp.eventHandler.tmpMap;
-            gp.player.worldX = gp.tileSize * gp.eventHandler.tmpX;
-            gp.player.worldY = gp.tileSize * gp.eventHandler.tmpY;
+            gp.currentMap = gp.eHandler.tmpMap;
+            gp.player.worldX = gp.tileSize * gp.eHandler.tmpX;
+            gp.player.worldY = gp.tileSize * gp.eHandler.tmpY;
         }
     }
-
     public void drawGameOverScreen(){
         g2.setColor(new Color(0,0,0, 200));
         g2.fillRect(0,0, gp.screenWidth, gp.screenHeight);
@@ -338,7 +397,6 @@ public class UI {
             g2.drawString(">",x-40,y);
         }
     }
-
     private void drawOptionScreen() {
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(32F));
@@ -357,7 +415,6 @@ public class UI {
         }
         gp.keyH.enterPressed = false;
     }
-
     public void options_control(int frameX,int frameY){
         int textX;
         int textY;
@@ -393,7 +450,6 @@ public class UI {
             }
         }
     }
-
     public void options_endGameConformation(int frameX,int frameY){
         int textX = frameX + gp.tileSize;
         int textY = frameY + gp.tileSize*2;
@@ -415,6 +471,7 @@ public class UI {
             if(gp.keyH.enterPressed == true){
                 subState = 0;
                 gp.gameState = gp.titleState;
+                gp.resetGame(true);
             }
         }
         text = "No";
@@ -429,7 +486,6 @@ public class UI {
             }
         }
     }
-
     public void options_top(int frameX,int frameY){
         int textX;
         int textY;
@@ -525,7 +581,6 @@ public class UI {
 
         gp.config.saveConfig();
     }
-
     private void fullScreenNotification (int frameX,int frameY){
         int textX = frameX + gp.tileSize;
         int textY = frameY + gp.tileSize * 3;
@@ -543,7 +598,6 @@ public class UI {
             }
         }
     }
-
     private void drawInventory(Entity entity,boolean cursor) {
         int x = 0;
         int y = 0;
@@ -578,9 +632,10 @@ public class UI {
 
         //предметы
         for (int i = 0; i < entity.inventory.size(); i++) {
-
+                //курсор
                 if( entity.inventory.get(i) == entity.currentWeapon ||
-                    entity.inventory.get(i) == entity.currentMagic) {
+                    entity.inventory.get(i) == entity.currentMagic ||
+                    entity.inventory.get(i) == entity.currentLantern) {
                 g2.setColor(new Color(218, 182, 30));
                 g2.fillRoundRect( slotX, slotY, gp.tileSize,gp.tileSize,10,10);
             }
@@ -637,12 +692,10 @@ public class UI {
             }
         }
     }
-
     public int getItemIndexOnSlot(int slotCol,int slotRow){
         int itemIndex = slotCol + (slotRow*5);
         return itemIndex;
     }
-
     private void drawMessage() {
         int messageX = gp.tileSize;
         int messageY = gp.tileSize * 5;
@@ -667,7 +720,6 @@ public class UI {
             }
         }
     }
-
     private void drawCharacterScreen() {
         int x = gp.tileSize * 1;
         int y = gp.tileSize * 1 + 20;
@@ -743,7 +795,6 @@ public class UI {
         y += 50;
         g2.drawImage(gp.player.currentMagic.down1, x, y, null);
     }
-
     private void drawPlayerLife() {
         int x = gp.tileSize / 2 - 10;
         int y = gp.tileSize / 2 - 20;
@@ -781,7 +832,6 @@ public class UI {
             i++;
         }
     }
-
     private void drawTitleScreen() {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 90));
         String text = "Little Alchemist";
@@ -839,19 +889,16 @@ public class UI {
 
 
     }
-
     public void addMessage(String text) {
         message.add(text);
         messageCounter.add(0);
     }
-
     public void drawPauseScreen() {
         String text = "PAUSED";
         int x = getXForCenteredText(text);
         int y = gp.screenHeight / 2;
         g2.drawString(text, x, y);
     }
-
     public void drawDialogueScreen() {
         int x = gp.tileSize * 1;
         int y = gp.tileSize * 8;
@@ -869,7 +916,6 @@ public class UI {
             y += 30;
         }
     }
-
     public void drawSubWindow(int x, int y, int width, int height) {
         //Color c =Color.MAGENTA;
         g2.setColor(new Color(0, 0, 0, 220));
@@ -879,16 +925,52 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
-
     public int getXForCenteredText(String str) {
         int length = (int) g2.getFontMetrics().getStringBounds(str, g2).getWidth();
         int x = gp.screenWidth / 2 - length / 2;
         return x;
     }
-
     public int getXForAlignToRight(String str, int tailX) {
         int length = (int) g2.getFontMetrics().getStringBounds(str, g2).getWidth();
         int x = tailX - length - 50;
         return x;
+    }
+    public void drawMonsterLife() {
+        for (int i = 0; i < gp.monster[1].length; i++) {
+
+            Entity monster = gp.monster[gp.currentMap][i];
+
+            if (monster != null && monster.inCamera() == true) {
+                if ( monster.hpBarOn == true && monster.boss == false) {
+                    double oneScale = (double) gp.tileSize / monster.maxLife;
+                    double hpBarValue = oneScale * monster.life;
+                    g2.setColor(Color.BLACK);
+                    g2.fillRect(monster.getScreenX() - 1, monster.getScreenY() - 16, gp.tileSize + 2, 12);
+                    g2.setColor(new Color(255, 0, 0, 178));
+                    g2.fillRect(monster.getScreenX(), monster.getScreenY() - 15, (int) hpBarValue, 10);
+                    monster.hpBarCounter++;
+                    if (monster.hpBarCounter > 600) {
+                        monster.hpBarCounter = 0;
+                        monster.hpBarOn = false;
+                    }
+                } else if (monster.boss == true) {
+                    double oneScale = (double) gp.tileSize * 8 / monster.maxLife;
+                    double hpBarValue = oneScale * monster.life;
+
+                    int x = gp.screenWidth/2 -gp.tileSize*4;
+                    int y = gp.tileSize * 10;
+
+                    g2.setColor(Color.BLACK);
+                    g2.fillRect(x-1, y-1, gp.tileSize * 8 + 2, 22);
+
+                    g2.setColor(new Color(255, 0, 0, 178));
+                    g2.fillRect(x, y, (int) hpBarValue, 20);
+
+                    g2.setFont(g2.getFont().deriveFont(Font.BOLD,24f));
+                    g2.setColor(Color.white);
+                    g2.drawString(monster.name, x+4,y-10);
+                }
+            }
+        }
     }
 }

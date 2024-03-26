@@ -8,7 +8,7 @@ public class KeyHandler implements KeyListener {
 
     GamePanel gp;
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, fPressed, magicKeyPressed, enterPressed,ePressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, fPressed, magicKeyPressed, enterPressed,ePressed, qPressed;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -45,9 +45,86 @@ public class KeyHandler implements KeyListener {
             tradeState(keyCode);
         } else if (gp.gameState == gp.doorState) {
             doorState(keyCode);
+        } else if (gp.gameState == gp.bedState) {
+            bedState(keyCode);
+        } else if (gp.gameState == gp.mapState) {
+            mapState(keyCode);
+        }
+
+    }
+    public void playState(int keyCode) {
+        if (keyCode == KeyEvent.VK_W) {
+            upPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_S) {
+            downPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_D) {
+            rightPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_A) {
+            leftPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_ESCAPE) {
+            gp.gameState = gp.optionsState;
+        }
+        if (keyCode == KeyEvent.VK_SPACE) {
+            gp.player.attacking = true;
+        }
+        if (keyCode == KeyEvent.VK_F) {
+            fPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_P) {
+            gp.gameState = gp.characterState;
+        }
+        if(keyCode == KeyEvent.VK_E){
+            magicKeyPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_M) {
+            gp.gameState = gp.mapState;
+        }
+        if (keyCode == KeyEvent.VK_N) {
+            if (gp.map.miniMapOn == false){
+                gp.map.miniMapOn = true;
+            } else {
+                gp.map.miniMapOn = false;
+            }
+        }
+        if (keyCode == KeyEvent.VK_Q) {
+            //qPressed = true;
+            gp.player.guarding = true;
         }
     }
-    private void tradeState(int keyCode) {
+    public void mapState(int keyCode){
+        if (keyCode == KeyEvent.VK_M || keyCode == KeyEvent.VK_ESCAPE){
+            gp.gameState = gp.playState;
+        }
+    }
+    public void bedState(int keyCode){
+        if (keyCode == KeyEvent.VK_F) {
+            fPressed = true;
+        }
+        if (gp.ui.subState == 0) {
+            if(keyCode == KeyEvent.VK_W){
+                gp.ui.commandNum--;
+                if(gp.ui.commandNum < 0){
+                    gp.ui.commandNum = 1;
+                }
+                gp.playSE(3);
+            }
+            if(keyCode == KeyEvent.VK_S){
+                gp.ui.commandNum++;
+                if(gp.ui.commandNum > 1){
+                    gp.ui.commandNum = 0;
+                }
+                gp.playSE(3);
+            }
+        }
+    }
+    public void tradeState(int keyCode) {
         if (keyCode == KeyEvent.VK_F) {
             fPressed = true;
         }
@@ -120,10 +197,12 @@ public class KeyHandler implements KeyListener {
         if (keyCode == KeyEvent.VK_E) {
             if (gp.ui.commandNum == 0) {
                 gp.gameState = gp.playState;
-                //gp.playMusic(0);
+                gp.playMusic(0);
             }
             if (gp.ui.commandNum == 1) {
-                //загрузка
+                gp.saveLoad.load();
+                gp.gameState = gp.playState;
+                gp.playMusic(0);
             }
             if (gp.ui.commandNum == 2) {
                 //настройки
@@ -152,45 +231,13 @@ public class KeyHandler implements KeyListener {
         if(keyCode == KeyEvent.VK_ENTER){
             if(gp.ui.commandNum == 0){
                 gp.gameState = gp.playState;
-                gp.retry();
+                gp.resetGame(false);
                 gp.playMusic(0);
             }
             if(gp.ui.commandNum == 1){
                 gp.gameState = gp.titleState;
-                gp.restart();
+                gp.resetGame(true);
             }
-        }
-    }
-    public void playState(int keyCode) {
-        if (keyCode == KeyEvent.VK_W) {
-            upPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_S) {
-            downPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_D) {
-            rightPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_A) {
-            leftPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-            gp.gameState = gp.optionsState;
-        }
-        if (keyCode == KeyEvent.VK_SPACE) {
-            gp.player.attacking = true;
-        }
-        if (keyCode == KeyEvent.VK_F) {
-            fPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_P) {
-            gp.gameState = gp.characterState;
-        }
-        if(keyCode == KeyEvent.VK_E){
-            magicKeyPressed = true;
-        }
-        if (keyCode == KeyEvent.VK_ENTER) {
-            enterPressed = true;
         }
     }
     public void pauseState(int keyCode) {
@@ -354,6 +401,9 @@ public class KeyHandler implements KeyListener {
         }
         if (keyCode == KeyEvent.VK_ENTER) {
             enterPressed = false;
+        }
+        if (keyCode == KeyEvent.VK_Q) {
+            qPressed = false;
         }
     }
 }

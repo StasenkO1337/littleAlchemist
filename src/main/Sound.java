@@ -19,6 +19,8 @@ public class Sound {
         soundURL[2] = getClass().getResource("/sound/powerup.wav");
         soundURL[3] = getClass().getResource("/sound/unlock.wav");
         soundURL[4] = getClass().getResource("/sound/fanfare.wav");
+
+        //мейн тема \монета\лвлап\открытие\Ура?\удар\получание пизды\смена оружия\курсор\топор\конец игры\блок\парирование
     }
 
     public void setFile(int i){

@@ -3,7 +3,6 @@ package monster;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_coin;
-import object.OBJ_fan;
 import object.OBJ_icicle;
 
 import java.util.Random;
@@ -21,6 +20,7 @@ public class MON_slimeG extends Entity {
         attack = 3;
         defense = 0;
         exp = 3;
+        knockBackPower = 1;
 
         solidArea.x = 2;
         solidArea.y = 16;
@@ -42,30 +42,18 @@ public class MON_slimeG extends Entity {
         right2 = setup("/monster/slimeG/slimeG2");
     }
 
-    public void setAction(){
+    public void setAction() {
         if (onPath == true) {
-            int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
-            int goalrow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
-            searchPath(goalCol,goalrow);
+            //проверка на "отставния"
+            checkStopChasingOrNot(gp.player,8);
+            //выбор направения следования
+            searchPath(getGoalCol(gp.player), getGoalRow(gp.player));
+            //выстрелы если нужно
         } else {
-            actionLockCounter++;
-            if (actionLockCounter == 60) {
-                Random random = new Random();
-                int i = random.nextInt(100) + 1;
-                if (i <= 25) {
-                    direction = "up";
-                }
-                if (i > 25 && i <= 50) {
-                    direction = "down";
-                }
-                if (i > 50 && i <= 75) {
-                    direction = "left";
-                }
-                if (i > 75 && i <= 100) {
-                    direction = "right";
-                }
-                actionLockCounter = 0;
-            }
+            //проверка на агр
+            checkStartChasingOrNot(gp.player,3);
+            //рандом движения
+            getRandomDirection(60);
         }
     }
 
@@ -74,20 +62,6 @@ public class MON_slimeG extends Entity {
         direction = gp.player.direction;
     }
 
-    public void update(){
-        super.update();
-
-        int xDistance = Math.abs(worldX - gp.player.worldX);
-        int yDistance = Math.abs(worldY - gp.player.worldY);
-
-        int tileDistance = (xDistance + yDistance)/ gp.tileSize;
-        if(onPath == false && tileDistance < 3){
-            onPath = true;
-        }
-        if(onPath == true && tileDistance > 8){
-            onPath = false;
-        }
-    }
 
     public void checkDrop(){
         int i = new Random().nextInt( 100)+1;

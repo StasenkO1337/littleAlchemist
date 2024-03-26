@@ -22,7 +22,7 @@ public class IT_tree extends interactiveTile{
     public boolean isCorrectItem (Entity entity){
         boolean isCorrectItem = false;
 
-        if(entity.currentWeapon.type == typeWeapon){
+        if(entity.currentWeapon.type == typeAxe){
             isCorrectItem = true;
         }
 

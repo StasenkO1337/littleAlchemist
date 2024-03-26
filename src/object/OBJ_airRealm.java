@@ -12,5 +12,9 @@ public class OBJ_airRealm extends Entity {
         knockBackPower = 1;
         description = name + "\nallows you to let\nin slimes";
         type = typeWeapon;
+        attackArea.width = 52;
+        attackArea.height = 52;
+        motion1Duration = 15;
+        motion2Duration = 35;
     }
 }

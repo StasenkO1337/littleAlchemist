@@ -51,15 +51,27 @@ public class EventHandler {
         }
 
         if (canTouchEvent == true){
-            if(hit(1,48,24,"any") == true){teleport(0,2,25);}
-            else if(hit(1,48,25,"any") == true){teleport(0,2,25);}
-            else if(hit(1,48,26,"any") == true){teleport(0,2,26);}
-            else if(hit(1,48,27,"any") == true){teleport(0,2,26);}
-            else if(hit(0,1,25,"any") == true){teleport(1,47,25);}
-            else if(hit(0,1,26,"any") == true){teleport(1,47,26);}
+            if(hit(1,48,24,"any") == true){teleport(0,2,25, gp.outside);}
+            else if(hit(1,48,25,"any") == true){teleport(0,2,25, gp.outside);}
+            else if(hit(1,48,26,"any") == true){teleport(0,2,26, gp.outside);}
+            else if(hit(1,48,27,"any") == true){teleport(0,2,26, gp.outside);}
+
+            else if(hit(0,1,25,"any") == true){teleport(1,46,25, gp.outside);}
+            else if(hit(0,1,26,"any") == true){teleport(1,46,26, gp.outside);}
             else if(hit(0,11,19,"up") == true){speak(gp.npc[0][1]);}
-            else if(hit(0,25,1,"any") == true){teleport(2,25,48);}
-            else if(hit(0,26,1,"any") == true){teleport(2,24,48);}
+            else if(hit(0,25,1,"any") == true){teleport(2,25,47, gp.outside);}
+            else if(hit(0,26,1,"any") == true){teleport(2,25,47, gp.outside);}
+
+            else if(hit(2,24,48,"any") == true){teleport(0,25,2, gp.outside);}
+            else if(hit(2,25,48,"any") == true){teleport(0,25,2, gp.outside);}
+
+            else if(hit(2,48,27,"any") == true){teleport(3,2,37, gp.dungeon);}
+            else if(hit(2,48,28,"any") == true){teleport(3,2,37, gp.dungeon);}
+
+            else if(hit(3,1,37,"any") == true){teleport(2,47,27, gp.outside);}
+            else if(hit(3,14,17,"any") == true){teleport(4,25,47, gp.dungeon);}
+
+            else if(hit(4,25,48,"any") == true){teleport(3,15,17, gp.dungeon);}
         }
 
     }
@@ -114,14 +126,12 @@ public class EventHandler {
         gp.keyH.fPressed = false;
     }
 
-    public void teleport(int mapNum, int x, int y) {
+    public void teleport(int mapNum, int x, int y, int area) {
         gp.gameState = gp.transitionState;
+        gp.currentArea = area;
         tmpMap = mapNum;
         tmpX = x;
         tmpY = y;
-
-
-
 
         canTouchEvent = false;
 

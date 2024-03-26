@@ -9,7 +9,7 @@ public class NPC_preacher extends Entity {
 
         direction = "down";
         speed = 0;
-        type = 0;
+        type = typeNPC;
 
         getNPCImage();
         setDialogue();
@@ -21,14 +21,10 @@ public class NPC_preacher extends Entity {
     }
 
     public void getNPCImage() {
-        up1 = setup("/npc/preacher/preacher");
-        up2 = setup("/npc/preacher/preacher");
+
         down1 = setup("/npc/preacher/preacher");
         down2 = setup("/npc/preacher/preacher");
-        left1 = setup("/npc/preacher/preacher");
-        left2 = setup("/npc/preacher/preacher");
-        right1 = setup("/npc/preacher/preacher");
-        right2 = setup("/npc/preacher/preacher");
+
     }
 
     public void setAction() {

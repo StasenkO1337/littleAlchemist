@@ -1,5 +1,4 @@
 package ai;
-import entity.Entity;
 import main.GamePanel;
 
 import java.util.ArrayList;

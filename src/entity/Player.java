@@ -13,6 +13,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     public boolean attackCanceled;
+    public boolean lightUpdated = false;
+
     public boolean haveKey1 = false;
 
 
@@ -28,43 +30,81 @@ public class Player extends Entity {
         solidAreaDefaultY = solidArea.y;
         attackArea.width = 52;
         attackArea.height = 52;
+        guarding = false;
 
         setDefaultValues();
-        getPlayerImage();
-        getPlayerAttackImage();
+        getImage();
+        getAttackImage();
+        getGuardImage();
         setItems();
     }
-    public void getPlayerImage() {
-        up1 = setup("/spirit/up1");
-        up2 = setup("/spirit/up2");
-        down1 = setup("/spirit/down1");
-        down2 = setup("/spirit/down2");
-        left1 = setup("/spirit/left1");
-        left2 = setup("/spirit/left2");
-        right1 = setup("/spirit/right1");
-        right2 = setup("/spirit/right2");
+    public void getImage() {
+        up1 = setup("/player/Walking sprites/up1");
+        up2 = setup("/player/Walking sprites/up2");
+        down1 = setup("/player/Walking sprites/down1");
+        down2 = setup("/player/Walking sprites/down2");
+        left1 = setup("/player/Walking sprites/left1");
+        left2 = setup("/player/Walking sprites/left2");
+        right1 = setup("/player/Walking sprites/right1");
+        right2 = setup("/player/Walking sprites/right2");
 
     }
-    public void getPlayerAttackImage() {
+    public void getAttackImage() {
         if(currentWeapon.name == "Air Realm") {
-            AU1 = setup("/spirit/AR/AU1", gp.tileSize, gp.tileSize * 2);
-            AU2 = setup("/spirit/AR/AU2", gp.tileSize, gp.tileSize * 2);
-            AD1 = setup("/spirit/AR/AD1", gp.tileSize, gp.tileSize * 2);
-            AD2 = setup("/spirit/AR/AD2", gp.tileSize, gp.tileSize * 2);
-            AL1 = setup("/spirit/AR/AL1", 2 * gp.tileSize, gp.tileSize);
-            AL2 = setup("/spirit/AR/AL2", 2 * gp.tileSize, gp.tileSize);
-            AR1 = setup("/spirit/AR/AR1", 2 * gp.tileSize, gp.tileSize);
-            AR2 = setup("/spirit/AR/AR2", 2 * gp.tileSize, gp.tileSize);
+            AU1 = setup("/player/Attacking sprites/AR/AU1", gp.tileSize, gp.tileSize * 2);
+            AU2 = setup("/player/Attacking sprites/AR/AU2", gp.tileSize, gp.tileSize * 2);
+            AD1 = setup("/player/Attacking sprites/AR/AD1", gp.tileSize, gp.tileSize * 2);
+            AD2 = setup("/player/Attacking sprites/AR/AD2", gp.tileSize, gp.tileSize * 2);
+            AL1 = setup("/player/Attacking sprites/AR/AL1", 2 * gp.tileSize, gp.tileSize);
+            AL2 = setup("/player/Attacking sprites/AR/AL2", 2 * gp.tileSize, gp.tileSize);
+            AR1 = setup("/player/Attacking sprites/AR/AR1", 2 * gp.tileSize, gp.tileSize);
+            AR2 = setup("/player/Attacking sprites/AR/AR2", 2 * gp.tileSize, gp.tileSize);
         } else if (currentWeapon.name == "Fire realm") {
-            AU1 = setup("/spirit/FR/AU1", gp.tileSize, gp.tileSize * 2);
-            AU2 = setup("/spirit/FR/AU2", gp.tileSize, gp.tileSize * 2);
-            AD1 = setup("/spirit/FR/AD1", gp.tileSize, gp.tileSize * 2);
-            AD2 = setup("/spirit/FR/AD2", gp.tileSize, gp.tileSize * 2);
-            AL1 = setup("/spirit/FR/AL1", 2 * gp.tileSize, gp.tileSize);
-            AL2 = setup("/spirit/FR/AL2", 2 * gp.tileSize, gp.tileSize);
-            AR1 = setup("/spirit/FR/AR1", 2 * gp.tileSize, gp.tileSize);
-            AR2 = setup("/spirit/FR/AR2", 2 * gp.tileSize, gp.tileSize);
+            AU1 = setup("/player/Attacking sprites/FR/AU1", gp.tileSize, gp.tileSize * 2);
+            AU2 = setup("/player/Attacking sprites/FR/AU2", gp.tileSize, gp.tileSize * 2);
+            AD1 = setup("/player/Attacking sprites/FR/ad1", gp.tileSize, gp.tileSize * 2);
+            AD2 = setup("/player/Attacking sprites/FR/AD2", gp.tileSize, gp.tileSize * 2);
+            AL1 = setup("/player/Attacking sprites/FR/AL1", 2 * gp.tileSize, gp.tileSize);
+            AL2 = setup("/player/Attacking sprites/FR/AL2", 2 * gp.tileSize, gp.tileSize);
+            AR1 = setup("/player/Attacking sprites/FR/AR1", 2 * gp.tileSize, gp.tileSize);
+            AR2 = setup("/player/Attacking sprites/FR/AR2", 2 * gp.tileSize, gp.tileSize);
+        } else if (currentWeapon.name == "Axe") {
+            AU1 = setup("/player/Attacking sprites/Axe/au1", gp.tileSize, gp.tileSize * 2);
+            AU2 = setup("/player/Attacking sprites/Axe/au2", gp.tileSize, gp.tileSize * 2);
+            AD1 = setup("/player/Attacking sprites/Axe/ad1", gp.tileSize, gp.tileSize * 2);
+            AD2 = setup("/player/Attacking sprites/Axe/ad2", gp.tileSize, gp.tileSize * 2);
+            AL1 = setup("/player/Attacking sprites/Axe/al1", 2 * gp.tileSize, gp.tileSize);
+            AL2 = setup("/player/Attacking sprites/Axe/al2", 2 * gp.tileSize, gp.tileSize);
+            AR1 = setup("/player/Attacking sprites/Axe/ar1", 2 * gp.tileSize, gp.tileSize);
+            AR2 = setup("/player/Attacking sprites/Axe/ar2", 2 * gp.tileSize, gp.tileSize);
         }
+        else if (currentWeapon.name == "Sword") {
+            AU1 = setup("/player/Attacking sprites/Sword/su1", gp.tileSize, gp.tileSize * 2);
+            AU2 = setup("/player/Attacking sprites/Sword/su2", gp.tileSize, gp.tileSize * 2);
+            AD1 = setup("/player/Attacking sprites/Sword/sd1", gp.tileSize, gp.tileSize * 2);
+            AD2 = setup("/player/Attacking sprites/Sword/sd2", gp.tileSize, gp.tileSize * 2);
+            AL1 = setup("/player/Attacking sprites/Sword/sl1", 2 * gp.tileSize, gp.tileSize);
+            AL2 = setup("/player/Attacking sprites/Sword/sl2", 2 * gp.tileSize, gp.tileSize);
+            AR1 = setup("/player/Attacking sprites/Sword/sr1", 2 * gp.tileSize, gp.tileSize);
+            AR2 = setup("/player/Attacking sprites/Sword/sr2", 2 * gp.tileSize, gp.tileSize);
+        }
+        else if (currentWeapon.name == "Pickaxe") {
+            AU1 = setup("/player/Attacking sprites/Pick/pu1", gp.tileSize, gp.tileSize * 2);
+            AU2 = setup("/player/Attacking sprites/Pick/pu2", gp.tileSize, gp.tileSize * 2);
+            AD1 = setup("/player/Attacking sprites/Pick/pd1", gp.tileSize, gp.tileSize * 2);
+            AD2 = setup("/player/Attacking sprites/Pick/pd2", gp.tileSize, gp.tileSize * 2);
+            AL1 = setup("/player/Attacking sprites/Pick/pl1", 2 * gp.tileSize, gp.tileSize);
+            AL2 = setup("/player/Attacking sprites/Pick/pl2", 2 * gp.tileSize, gp.tileSize);
+            AR1 = setup("/player/Attacking sprites/Pick/pr1", 2 * gp.tileSize, gp.tileSize);
+            AR2 = setup("/player/Attacking sprites/Pick/pr2", 2 * gp.tileSize, gp.tileSize);
+        }
+    }
+    public void getGuardImage(){
+        gu = setup("/player/Guarding sprites/gu");
+        gd = setup("/player/Guarding sprites/gd");
+        gl = setup("/player/Guarding sprites/gl");
+        gr = setup("/player/Guarding sprites/gr");
+
     }
     public void setDefaultValues() {
         direction = "down";
@@ -88,6 +128,7 @@ public class Player extends Entity {
 
         currentWeapon = new OBJ_airRealm(gp);
         currentMagic = new OBJ_fireballScroll(gp);
+        currentLantern = null;
         projectile = new OBJ_fireball(gp);
 
         attack = getAttack();
@@ -99,182 +140,177 @@ public class Player extends Entity {
 
     }
     public void setDefaultPosition(){
-        worldX = gp.tileSize * 25;
-        worldY = gp.tileSize * 25;
+        worldX = gp.tileSize * 20;
+        worldY = gp.tileSize * 20;
         direction = "down";
+        gp.currentMap = 0;
     }
-    public void restoreManaAndLife(){
+    public void restoreStatus(){
         life = maxLife;
         mana = maxMana;
+        speed = 5;
         invincible = false;
+        transparent = false;
+        attacking = false;
+        guarding = false;
+        knockBack = false;
+        lightUpdated = true;
     }
     public void setItems(){
         inventory.add(currentWeapon);
         inventory.add(currentMagic);
         inventory.add(new OBJ_fireRealm(gp));
-        inventory.add(new OBJ_flaskR(gp));
+        inventory.add(new OBJ_pick(gp));
+        inventory.add(new OBJ_sword(gp));
+        inventory.add(new OBJ_axe(gp));
+        inventory.add(new OBJ_lantern(gp));
+
     }
     private int getDefence() {
         return defense = dexterity + 1;
     }
-    private int getAttack() {
+    public int getAttack() {
+        attackArea = currentWeapon.attackArea;
+        motion1Duration = currentWeapon.motion1Duration;
+        motion2Duration = currentWeapon.motion2Duration;
         return attack = strength * currentWeapon.attackValue;
     }
     public void update() {
-        if (attacking == true){
+        if (knockBack == true) {
+            collisionOn = false;
+            gp.cChecker.checkObject(this, true);
+            gp.cChecker.checkEntity(this, gp.npc);
+            gp.cChecker.checkEntity(this, gp.monster);
+            gp.cChecker.checkEntity(this, gp.iTile);
+            if (collisionOn == true) {
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            } else if (collisionOn == false) {
+                switch (knockBackDirection) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+            knockBackCounter++;
+            if (knockBackCounter == 10) {
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        } else if (attacking == true && keyH.qPressed == false) {
+            guarding = false;
             attack();
-        } else if(keyH.upPressed == true||keyH.downPressed == true||keyH.leftPressed == true||keyH.rightPressed == true ||
-            keyH.fPressed == true) {
+        } else if (keyH.qPressed == true && attacking == false) {
+            attacking = false;
+            guarding = true;
+            guardCounter++;
+        }
+        else if (keyH.upPressed == true || keyH.downPressed == true
+                || keyH.leftPressed == true || keyH.rightPressed == true || keyH.fPressed == true) {
             if (keyH.upPressed == true) direction = "up";
             if (keyH.downPressed == true) direction = "down";
             if (keyH.rightPressed == true) direction = "right";
             if (keyH.leftPressed == true) direction = "left";
             //чек коллизии
             collisionOn = false;
-            gp.collisionChecker.checkTile(this);
+            gp.cChecker.checkTile(this);
 
-
-            int objIndex = gp.collisionChecker.checkObject(this, true);
+            int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
-            int npcIndex = gp.collisionChecker.checkEntity(this, gp.npc);
+            int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
 
-            int monsterIndex = gp.collisionChecker.checkEntity(this, gp.monster);
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
             contactMonster(monsterIndex);
 
-            gp.collisionChecker.checkEntity(this, gp.iTile);
-
-
-            gp.eventHandler.checkEvent();
+            gp.cChecker.checkEntity(this, gp.iTile);
+            gp.eHandler.checkEvent();
 
             if (collisionOn == false && keyH.fPressed == false) {
                 switch (direction) {
                     case "up": worldY -= speed;break;
-                    case "down":  worldY += speed;break;
-                    case "left":  worldX -= speed;break;
-                    case "right":  worldX += speed;break;
+                    case "down": worldY += speed;break;
+                    case "left": worldX -= speed;break;
+                    case "right": worldX += speed;break;
                 }
             }
             gp.keyH.fPressed = false;
+            if (guarding == false) {
+                spriteCounter++;
+                if (spriteCounter > 15) {
+                    if (spriteNum == 1) {
+                        spriteNum = 2;
+                    } else {
+                        spriteNum = 1;
+                    }
+                    spriteCounter = 0;
+                }
+            }
+            guarding = false;
         }
-
-        if (invincible == true){
+        if (invincible == true) {
             invincibleCounter++;
-            if (invincibleCounter == 60){
+            if (invincibleCounter == 60) {
                 invincible = false;
+                transparent = false;
                 invincibleCounter = 0;
             }
         }
-
-
+        guardCounter = 0;
         //магия
-        if (gp.keyH.magicKeyPressed == true && projectile.alive == false
-                && shotAvailableCounter == 30 && projectile.haveResource(this) == true){
-
-            projectile.set(worldX,worldY,direction,true,this);
+        if (gp.keyH.magicKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
+            projectile.set(worldX, worldY, direction, true, this);
             projectile.subtractResource(this);
-
-
-            for(int i = 0; i < gp.projectile[1].length; i++){
-                if(gp.projectile[gp.currentMap][i] == null){
+            for (int i = 0; i < gp.projectile[1].length; i++) {
+                if (gp.projectile[gp.currentMap][i] == null) {
                     gp.projectile[gp.currentMap][i] = projectile;
                     break;
                 }
             }
-
             shotAvailableCounter = 0;
             //звук
-
         }
-        if (gp.keyH.magicKeyPressed == false && projectile.alive == true){
-            gp.collisionChecker.checkTile(projectile);
+        if (gp.keyH.magicKeyPressed == false && projectile.alive == true) {
+            gp.cChecker.checkTile(projectile);
         }
-
-        if(shotAvailableCounter < 30){
+        if (shotAvailableCounter < 30) {
             shotAvailableCounter++;
         }
-
-        spriteCounter++;
-        if (spriteCounter > 15) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else {
-                spriteNum = 1;
-            }
-            spriteCounter = 0;
-        }
-
-        if (life > maxLife){
+        if (life > maxLife) {
             life = maxLife;
         }
-        if(mana > maxMana){
+        if (mana > maxMana) {
             mana = maxMana;
         }
-
-        if (life <= 0){
+        if (life <= 0) {
             gp.gameState = gp.gameOverState;
             gp.ui.commandNum = -1;
             gp.stopMusic();
             gp.playSE(1);
         }
+
     }
-    private void attack() {
-        //gp.playSE(1);
-
-
-        spriteCounter++;
-
-        if (spriteCounter <= 10){
-            spriteNum = 1;
-        }
-        if (spriteCounter > 10 && spriteCounter <=30) {
-            spriteNum = 2;
-            int currentWorldX = worldX;
-            int currentWorldY = worldY;
-            int solidAreaWidth = solidArea.width;
-            int solidAreaHeight = solidArea.height;
-
-            switch (direction) {
-                case "up": worldY -= attackArea.height;break;
-                case "down": worldY += attackArea.height;break;
-                case "left": worldX -= attackArea.width;break;
-                case "right": worldX += attackArea.width;break;
-            }
-
-            solidArea.width = attackArea.width;
-            solidArea.height = attackArea.height;
-
-            int monsterIndex = gp.collisionChecker.checkEntity(this,gp.monster);
-            damageMonster(monsterIndex,attack,currentWeapon.knockBackPower);
-
-            int iTileIndex = gp.collisionChecker.checkEntity(this, gp.iTile);
-            damageInteractiveTile(iTileIndex);
-
-            int projectileIndex = gp.collisionChecker.checkEntity(this,gp.projectile);
-            damageProjectile(projectileIndex);
-
-            worldX = currentWorldX;
-            worldY = currentWorldY;
-            solidArea.height = solidAreaHeight;
-            solidArea.width = solidAreaWidth;
-        }
-        if (spriteCounter > 30){
-            spriteNum = 1;
-            spriteCounter = 0;
-            attacking = false;
-        }
-    }
-    public void knockBack(Entity entity,int knockBackPower){
-        entity.direction = direction;
-        entity.speed += knockBackPower ;
-        entity.knockBack = true;
-    }
-    public void damageMonster(int monsterIndex,int attack, int knockBackPower) {
+    public void damageMonster(int monsterIndex,Entity attacker,int attack, int knockBackPower) {
         if (monsterIndex != 999){
             if (gp.monster[gp.currentMap][monsterIndex].invincible == false){
 
-                knockBack(gp.monster[gp.currentMap][monsterIndex],knockBackPower);
+                setKnockBack(gp.monster[gp.currentMap][monsterIndex],attacker,knockBackPower);
+
+                if (gp.monster[gp.currentMap][monsterIndex].offBalance == true){
+                    attack *= 3;
+                }
 
                 int damage = attack - gp.monster[gp.currentMap][monsterIndex].defense;
                 if ( damage < 0){
@@ -326,6 +362,10 @@ public class Player extends Entity {
             /// что то прикольное нужно сделать
             strength++;
             dexterity++;
+            maxLife +=2;
+            maxMana +=1;
+            life = maxLife;
+            mana = maxMana;
 
             attack = getAttack();
             defense = getDefence();
@@ -338,11 +378,12 @@ public class Player extends Entity {
         if (i != 999) {
             if (invincible == false && gp.monster[gp.currentMap][i].dying == false) {
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
-                if ( damage < 0){
-                    damage = 0;
+                if ( damage < 1){
+                    damage = 1;
                 }
                 life -= damage;
                 invincible = true;
+                transparent = true;
             }
         }
     }
@@ -372,13 +413,14 @@ public class Player extends Entity {
             }
         }
     }
-    public void interactNPC(int npcIndex){
-        if(gp.keyH.fPressed == true){
-            if (npcIndex != 999) {
-                //зациклить
+    public void interactNPC(int npcIndex) {
+        if (npcIndex != 999) {
+            if (gp.keyH.fPressed == true) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][npcIndex].speak();
+
             }
+            gp.npc[gp.currentMap][npcIndex].move(direction);
         }
     }
     public void draw(Graphics2D g2) {
@@ -399,6 +441,9 @@ public class Player extends Entity {
                     if (spriteNum == 1) image = AU1;
                     if (spriteNum == 2) image = AU2;
                 }
+                if ( guarding == true){
+                    image = gu;
+                }
                 break;
             case "down":
                 if (attacking == false) {
@@ -409,6 +454,9 @@ public class Player extends Entity {
                     if (spriteNum == 1) image = AD1;
                     if (spriteNum == 2) image = AD2;
                 }
+                if ( guarding == true){
+                    image = gd;
+                }
                 break;
             case "right":
                 if (attacking == false) {
@@ -418,6 +466,9 @@ public class Player extends Entity {
                 if (attacking == true){
                     if (spriteNum == 1) image = AR1;
                     if (spriteNum == 2) image = AR2;
+                }
+                if (guarding){
+                    image = gr;
                 }
                 break;
             case "left":
@@ -430,10 +481,13 @@ public class Player extends Entity {
                     if (spriteNum == 1) image = AL1;
                     if (spriteNum == 2) image = AL2;
                 }
+                if ( guarding == true){
+                    image = gl;
+                }
                 break;
         }
 
-        if ( invincible == true){
+        if ( transparent == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.3f));
         }
         g2.drawImage(image, tmpScreenX, tmpScreenY, null);
@@ -445,15 +499,25 @@ public class Player extends Entity {
         if (itemIndex < inventory.size()){
             Entity selectedItem = inventory.get(itemIndex);
 
-            if (selectedItem.type == typeWeapon ){
+            if (selectedItem.type == typeWeapon || selectedItem.type == typeAxe|| selectedItem.type == typePick){
                 currentWeapon = selectedItem;
                 attack = getAttack();
-                getPlayerAttackImage();
+                getAttackImage();
             }
+
+
             if (selectedItem.type == typeMagic) {
                 currentMagic = selectedItem;
-                getPlayerAttackImage();
+                getAttackImage();
                 //смена магии
+            }
+            if (selectedItem.type == typeLight) {
+                if (currentLantern == selectedItem){
+                    currentLantern = null;
+                } else {
+                    currentLantern = selectedItem;
+                }
+                lightUpdated = true;
             }
             if (selectedItem.type == typeConsumable){
 
@@ -503,5 +567,23 @@ public class Player extends Entity {
             }
         }
         return canObtain;
+    }
+    public int getCurrentWeaponSlot(){
+        int currentWeaponSlot = 0;
+        for (int i = 0; i < inventory.size(); i++){
+            if (inventory.get(i) == currentWeapon){
+                currentWeaponSlot = i;
+            }
+        }
+        return currentWeaponSlot;
+    }
+    public int getCurrentMagicSlot(){
+        int currentMagicSlot = 0;
+        for (int i = 0; i < inventory.size(); i++){
+            if (inventory.get(i) == currentMagic){
+                currentMagicSlot = i;
+            }
+        }
+        return currentMagicSlot;
     }
 }

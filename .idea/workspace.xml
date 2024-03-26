@@ -6,7 +6,202 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de5f3d0e-3935-4fea-b2a2-0325629d7d7b" name="Changes" comment="git" />
+    <list default="true" id="de5f3d0e-3935-4fea-b2a2-0325629d7d7b" name="Changes" comment="добавил много фич, практически фулл переделка">
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oad1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oad2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oal1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oal2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oar1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oar2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oau1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/oau2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/od1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/od2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/ol1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/ol2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/or1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/or2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/ou1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/Orc/ou2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/bat/batD1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/bat/batD2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_attack_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_attack_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_phase2_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/skeletron/skeletonlord_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/down1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/down2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/left1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/left2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/right2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/up1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/npc/spirit/up2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/Idoor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/Idoor1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/Idoor2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/Idoor3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/axe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/bed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/lantern.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/pickaxe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/sword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/tileInteractive/dask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/tileInteractive/plate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/tileInteractive/rock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/objects/tileInteractive/wall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AD1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AD2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AL1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AL2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AR1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AR2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AU1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/AR/AU2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/ad1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/ad2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/al1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/al2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/ar1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/ar2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/au1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Axe/au2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AD1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AD2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AL1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AL2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AR1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AR2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AU1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/FR/AU2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pd1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pd2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pl1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pl2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pr1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pr2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pu1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Pick/pu2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sd1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sd2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sl1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sl2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sr1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/sr2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/su1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Attacking sprites/Sword/su2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Guarding sprites/gd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Guarding sprites/gl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Guarding sprites/gl1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Guarding sprites/gr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Guarding sprites/gu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/down1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/down2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/left1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/left2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/right2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/up1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/Walking sprites/up2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/SaveLoad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/dataStorage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/NPC_rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/monster/MON_bat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/monster/MON_orc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/monster/MON_skeletron.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_axe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_bed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_door_iron.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_lantern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_pick.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/object/OBJ_sword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tile/Map.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tile_interactive/IT_plate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tile_interactive/IT_wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/cave.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/cave.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/townMap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/townMap.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AD1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AD2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AL1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AL2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AR1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AR2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AU1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/AR/AU2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AD1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AD2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AL1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AL2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AR1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AR2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AU1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/FR/AU2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/down1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/down2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/left1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/left2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/right1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/right2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/up1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spirit/up2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles1.0/038.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/tiles1.0/038.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ai/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ai/PathFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/NPC_oldMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/NPC_oldMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/NPC_preacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/NPC_preacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_evilEye.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_evilEye.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_slimeG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_slimeG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/OBJ_airRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/OBJ_airRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/OBJ_door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/OBJ_door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/OBJ_evilEyeBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/OBJ_evilEyeBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/OBJ_fireRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/OBJ_fireRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/SuperObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tile_interactive/IT_tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile_interactive/IT_tree.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,22 +228,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/littleAlchemist&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3816092&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.postfix.templates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/littleAlchemist",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3816092",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\littleAlchemist\res\monster\skeletron" />
+      <recent name="C:\littleAlchemist\res\monster\bat" />
+      <recent name="C:\littleAlchemist\res\objects" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\littleAlchemist\res\maps" />
       <recent name="D:\power\littleAlchemist\res\font" />
@@ -179,6 +379,32 @@
       <workItem from="1709573717831" duration="1594000" />
       <workItem from="1709623481141" duration="5855000" />
       <workItem from="1709652243468" duration="3976000" />
+      <workItem from="1709656492638" duration="3397000" />
+      <workItem from="1709728927209" duration="1188000" />
+      <workItem from="1709801161318" duration="8080000" />
+      <workItem from="1709826673010" duration="3509000" />
+      <workItem from="1709926666265" duration="4549000" />
+      <workItem from="1709984049837" duration="4936000" />
+      <workItem from="1710021440927" duration="4101000" />
+      <workItem from="1710147111730" duration="5093000" />
+      <workItem from="1710195369825" duration="11793000" />
+      <workItem from="1710251593890" duration="1699000" />
+      <workItem from="1710345355258" duration="117000" />
+      <workItem from="1710376736258" duration="1574000" />
+      <workItem from="1710461675445" duration="9498000" />
+      <workItem from="1710551220246" duration="5150000" />
+      <workItem from="1710652804444" duration="52000" />
+      <workItem from="1710710524969" duration="9697000" />
+      <workItem from="1710829145554" duration="1609000" />
+      <workItem from="1710837060020" duration="595000" />
+      <workItem from="1710916606983" duration="1192000" />
+      <workItem from="1711014767840" duration="8905000" />
+      <workItem from="1711094233861" duration="3320000" />
+      <workItem from="1711104028849" duration="1809000" />
+      <workItem from="1711113502041" duration="2582000" />
+      <workItem from="1711354988568" duration="3832000" />
+      <workItem from="1711369481949" duration="3518000" />
+      <workItem from="1711447974971" duration="2370000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1703524049827</created>
@@ -187,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703524049827</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="добавил много фич, практически фулл переделка">
+      <created>1709656666995</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709656666995</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +440,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="добавил много фич, практически фулл переделка" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил много фич, практически фулл переделка" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

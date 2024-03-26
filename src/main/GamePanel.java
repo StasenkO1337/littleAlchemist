@@ -1,9 +1,11 @@
 package main;
 
 import ai.PathFinder;
+import data.SaveLoad;
 import entity.Entity;
 import entity.Player;
 import environment.EnvironmentManager;
+import tile.Map;
 import tile.TileManager;
 import tile_interactive.interactiveTile;
 
@@ -48,7 +50,8 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler keyH = new KeyHandler(this);
     public UI ui =new UI(this);
     public AssetSetter aSetter = new AssetSetter(this);
-    public PathFinder pathFinder = new PathFinder(this);
+
+    SaveLoad saveLoad = new SaveLoad(this);
 
     Sound music = new Sound();
     Sound se = new Sound();
@@ -66,9 +69,10 @@ public class GamePanel extends JPanel implements Runnable {
     public interactiveTile iTile[][] = new interactiveTile[maxMap][50];
     public ArrayList<Entity> entityList = new ArrayList<>();
     public ArrayList<Entity> particleList = new ArrayList<>();
-    public CollisionChecker collisionChecker = new CollisionChecker(this);
-    public EventHandler eventHandler = new EventHandler(this);
-
+    public CollisionChecker cChecker = new CollisionChecker(this);
+    public EventHandler eHandler = new EventHandler(this);
+    public PathFinder pFinder = new PathFinder(this);
+    Map map = new Map(this);
 
     //переключатели стадий игры
     public int gameState;
@@ -82,6 +86,15 @@ public class GamePanel extends JPanel implements Runnable {
     public final int transitionState = 7;
     public final int tradeState = 8;
     public final int doorState = 9;
+    public final int bedState = 10;
+    public final int sleepState = 11;
+    public final int mapState = 12;
+
+    //area
+    public int currentArea;
+    public final int outside = 1;
+    public final int indoor = 2;
+    public final int dungeon = 3;
 
     public GamePanel() throws IOException, FontFormatException {
 
@@ -100,6 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
         eManager.setUp();
         playMusic(0);
         gameState = titleState;
+        currentArea = outside;
 
         tempScreen = new BufferedImage(screenWidth,screenHeight,BufferedImage.TYPE_INT_ARGB);
         g2 = (Graphics2D) tempScreen.getGraphics();
@@ -131,8 +145,12 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (delta >= 1) {
                 update();
-
-                drawToTempScreen();
+                try {
+                    drawToTempScreen();
+                } catch (
+                        Exception e) {
+                    throw new RuntimeException(e);
+                }
                 drawToScreen();
                 //System.out.print(gameState);
                 delta--;
@@ -141,9 +159,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if ( gameState == titleState){
-            ui.draw(g2);
-        }
         if( gameState == playState) {
             player.update();
             for(int i = 0; i < npc[1].length; i++){
@@ -189,6 +204,8 @@ public class GamePanel extends JPanel implements Runnable {
                     iTile[currentMap][i].update();
                 }
             }
+
+            eManager.update();
         }
 
     }
@@ -208,10 +225,14 @@ public class GamePanel extends JPanel implements Runnable {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
 
-
     }
-    public void drawToTempScreen() {
-
+    public void drawToTempScreen() throws Exception {
+        if ( gameState == titleState){
+            ui.draw(g2);
+        } else if (gameState == mapState){
+            map.drawFullMapScreen(g2);
+        }
+        else {
             //карта
             tileManager.draw(g2);
             for (int i = 0; i < iTile[1].length; i++) {
@@ -221,13 +242,11 @@ public class GamePanel extends JPanel implements Runnable {
             }
             //добавить сущности в лист
             entityList.add(player);
-
             for (int i = 0; i < npc[1].length; i++) {
                 if (npc[currentMap][i] != null) {
                     entityList.add(npc[currentMap][i]);
                 }
             }
-
             for (int i = 0; i < obj[1].length; i++) {
                 if (obj[currentMap][i] != null) {
                     entityList.add(obj[currentMap][i]);
@@ -260,9 +279,11 @@ public class GamePanel extends JPanel implements Runnable {
             entityList.clear();
             //окружение
             eManager.draw(g2);
+
+            map.drawMiniMap(g2);
             //интерфейс
             ui.draw(g2);
-
+        }
     }
 
     public void drawToScreen(){
@@ -281,22 +302,21 @@ public class GamePanel extends JPanel implements Runnable {
         music.stop();
     }
 
-    public void retry(){
+    public void resetGame(boolean restart){
+        currentArea = outside;
         player.setDefaultPosition();
-        player.restoreManaAndLife();
+        player.restoreStatus();
         aSetter.setNPC();
         aSetter.setMonster();
+        if (restart == true) {
+            player.setDefaultValues();
+            player.setItems();
+            aSetter.setObjects();
+            aSetter.setInteractiveTile();
+            eManager.lighting.resetDay();
+        }
     }
 
-    public void restart(){
-        player.setDefaultValues();
-        player.setDefaultPosition();
-        player.restoreManaAndLife();
-        aSetter.setNPC();
-        aSetter.setMonster();
-        aSetter.setObjects();
-        aSetter.setInteractiveTile();
-    }
 
     public void playSE(int i){
         se.setFile(i);

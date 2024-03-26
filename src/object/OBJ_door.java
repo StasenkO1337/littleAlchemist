@@ -23,6 +23,5 @@ public class OBJ_door extends entity.Entity {
 
     public void interact(){
         gp.gameState = gp.doorState;
-        gp.ui.currentDialogue = "нужен ключик чтобы отпереть";
     }
 }
